@@ -2,11 +2,13 @@
 import { useState } from "react";
 import { TemplatesSection } from "./components/templates";
 import "./home.css";
-import "./components/index.scss"
-import { RiUploadCloudFill } from "react-icons/ri";
+import "./components/index.scss";
+import { RiTwitterXFill, RiUploadCloudFill } from "react-icons/ri";
 import { templates } from "./context/data";
 import { saveCardAsImage } from "./context/service";
 
+const ENV = window.__ENV || {};
+const title = ENV.TITLE || "UNEMPLOYMENT CLUB COMPANY";
 export function App() {
   const [activeTemplate, setActiveTemplate] = useState(1);
   const [formData, setFormData] = useState({
@@ -64,7 +66,13 @@ export function App() {
   return (
     <div className="df fdc aic gap-20 main-container">
       <div className="w100 df fdc aic gap-10 main-title">
-        <h1>UNEMPLOYMENT CLUB COMPANY</h1>
+        <button
+          className="button-86 df aic gap-10"
+          onClick={() => window.open(ENV.X, "_blank")}
+        >
+          Follow X
+        </button>
+        <h1>{title}</h1>
         <p>
           A place to share your AI-generated unemployment stories and
           experiences.
